@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Запустить тест</h1>
+    <script>
+
+        //debugger;
+
+        const GetSum = (a, b) => {
+          let min = Math.min(a, b),
+              max = Math.max(a, b);
+          return (max - min + 1) * (min + max) / 2;
+        }
+
+
+        console.log("Должно быть GetSum(1, 0) == 1, а у нас " + GetSum(1, 0));
+        console.log("Должно быть GetSum(1, 2) == 3, а у нас " + GetSum(1, 2));
+        console.log("Должно быть GetSum(0, 1) == 1, а у нас " + GetSum(0, 1));
+        console.log("Должно быть GetSum(1, 1) == 1, а у нас " + GetSum(1, 1));
+        console.log("Должно быть GetSum(-1, 0) == -1, а у нас " + GetSum(-1, 0));
+        console.log("Должно быть GetSum(-1, 2) == 2, а у нас " + GetSum(-1, 2));
+
+
+    </script>
+</body>
+</html>

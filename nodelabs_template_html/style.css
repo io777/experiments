@@ -1,0 +1,108 @@
+body {
+    font-family: "proxima-nova-soft", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    background-color: #333333;
+    border: 1px solid #333333;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/*navigation menu*/
+
+.nav {
+    position: relative;
+    height: 150px;
+    background-color: #333333;
+}
+
+.nav ul {
+    position: absolute;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    top: 95px;
+    height: 30px;
+    /*border: 1px solid white;*/
+    width: 100%;
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.nav ul li a {
+    display: inline-block;
+    border-bottom: none;
+    text-decoration: none;
+    border-right: 2px solid grey;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #cccccc;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.nav li:last-child a {
+    border-right: none;
+}
+
+.nav img {
+    width: 100%;
+    max-width: 300px;
+}
+
+.nav input {
+    display: inline-block;
+    background-color: #fff;
+    height: 25px;
+    width: 15%;
+    border-radius: 5px;
+    margin-left: 10px;
+    outline: none;
+    border: 1px solid black;
+    padding-left: 10px;
+}
+
+.nav .menu-space {
+    border-right: none;
+    margin-right: 20%;
+}
+
+/*section main*/
+
+.main {
+    text-align: center;
+    background-color: #eeeeee;
+    height: 300px;
+    line-height: 300px;
+    border: 1px solid #eeeeee;
+    vertical-align: middle;
+}
+
+.hero {
+    line-height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+}
+
+.hero h1 {
+    color: seagreen;
+    font-weight: 400;
+}
+.hero p {
+    color: #333333;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 26px;
+}

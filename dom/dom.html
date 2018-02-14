@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <title>Галерея</title>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1>Hello world!</h1>
+    </body>
+
+    <script>
+      //debugger;
+
+      let ladder = {
+        step: 0,
+        up: function() { // вверх по лестнице
+          this.step++;
+          return this;
+        },
+        down: function() { // вниз по лестнице
+          this.step--;
+          return this;
+        },
+        showStep: function() { // вывести текущую ступеньку
+          alert( this.step );
+          return this;
+        }
+      };
+
+      ladder.up().up().down().up().down().showStep(); // 1
+
+    </script>
+
+</html>

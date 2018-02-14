@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Запуск</h1>
+
+<script>
+  //debugger;
+
+  function duplicateCount(text) {
+    return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
+  }
+
+  console.log("Должно быть 0, а у нас " + duplicateCount(""));
+  console.log("Должно быть 0, а у нас " + duplicateCount("abcde"));
+  console.log("Должно быть 2, а у нас " + duplicateCount("aabbcde"));
+  console.log("Должно быть 2, а у нас " + duplicateCount("aabBcde"));
+  console.log("Должно быть 1, а у нас " + duplicateCount("Indivisibility"));
+  console.log("Должно быть 2, а у нас " + duplicateCount("Indivisibilities"));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <title>File manager</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>File manager</h1>
+                <ul id="files"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        fileManager();
+
+        function fileManager() {
+          // create new obj
+          const xhr = new XMLHttpRequest();
+          // config obj
+          xhr.open('GET', '/file-manager', true); // true - async
+          // send request
+          xhr.send();
+          // load
+          xhr.onload = function () {
+            // if err
+            if(xhr.status !== 200) {
+              console.log(xhr.status + ': ' + xhr.statusText);
+              return;
+            }
+
+            // get obj with files
+            let treeFiles = JSON.parse(xhr.responseText);
+
+            function setFile(obj, parentObj) {
+              for(let key in obj) {
+
+                // only self property
+                if(obj.hasOwnProperty(key)) {
+
+                  let ul = document.createElement('ul');
+                  let li = document.createElement('li');
+                  let a = document.createElement('a');
+                  let span = document.createElement('span');
+
+                  // if file
+                  if ((typeof obj[key]) === 'string') {
+
+                    a.textContent = key;
+                    a.setAttribute('href', obj[key]);
+
+                    // if files in dir
+                    if(parentObj) {
+                        let liParent = document.querySelector('.' + parentObj);
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                        liParent.appendChild(ul);
+                    } else {
+                      li.appendChild(a);
+                      files.appendChild(li);
+                    }
+
+                  }
+
+                  // if dir
+                  if ((typeof obj[key]) === 'object') {
+
+                    span.textContent = key;
+                    li.setAttribute('class', key);
+                    li.appendChild(span);
+                    files.appendChild(li);
+
+                    setFile(obj[key], key);
+                  }
+                }
+              }
+            }
+
+            // call function
+            setFile(treeFiles);
+
+          };
+        }
+
+    </script>
+
+</body>
+</html>

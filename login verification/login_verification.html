@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      "use strict";
+
+      let user = prompt('Кто пришел', '');
+
+      if (user !== null) {
+
+        if (user === 'Admin') {
+
+          let pwd = prompt('Пароль?', '');
+
+          if (pwd !== null) {
+
+            if (pwd === 'Черный властелин') {
+              alert('Добро пожаловать!');
+            } else {
+              alert('Пароль неаерен')
+            }
+
+          } else {
+            alert('Вход отменен')
+          }
+        } else {
+          alert('Я вас не знаю');
+        }
+
+      } else {
+        alert('Вход отменен')
+      }
+
+
+
+    </script>
+</body>

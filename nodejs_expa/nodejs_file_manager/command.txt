@@ -1,0 +1,44 @@
+Don't forget tune server time (ntp)
+
+// docker cmd
+docker-compose up --build
+docker exec -it yamove_web_1 /bin/bash
+
+// node path
+https://gist.github.com/branneman/8048520
+
+4. The Environment
+
+Set the NODE_PATH environment variable to the absolute path of your application, ending with the directory you want your modules relative to (in my case .).
+
+There are 2 ways of achieving the following require() statement from anywhere in your application:
+
+var Article = require('app/models/article');
+4.1. Up-front
+
+Before running your node app, first run:
+
+Linux: export NODE_PATH=.
+Windows: set NODE_PATH=.
+
+Setting a variable like this with export or set will remain in your environment as long as your current shell is open. To have it globally available in any shell, set it in your userprofile and reload your environment.
+
+// npm save
+npm config set save=true
+
+// npm update all to latest version
+npm i -g npm-check-updates
+npm-check-updates -u
+npm install
+
+//Удалить все Docker контейнеры
+# docker rm $(docker ps -a -q)
+Опция –q (–quiet) — дает возможно узнавать  идентификаторы самих контейнеров с утилитой ps.
+
+//Удалить все Docker images
+
+Смотрим что имеется:
+# docker images
+
+И удаляем:
+# docker rmi $(docker images -q)

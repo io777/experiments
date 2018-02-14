@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+<h1>Hello Plunker!</h1>
+
+<script>
+  "use strict";
+
+  function rle(value){
+    let currentSymbol = '';
+    let preventSymbol = '';
+    let lastSymbol = value.slice(-1);
+    let count = 1;
+    let result = '';
+
+    for (let i = 1; i < value.length; i++) {
+      currentSymbol = value[i];
+      preventSymbol = value[i-1];
+
+      if (currentSymbol === preventSymbol) {
+        count++;
+        continue;
+      }
+
+      result += preventSymbol + count;
+      count = 1;
+
+    }
+
+    result += lastSymbol + count;
+    return result;
+
+  }
+
+  console.log(rle('MGHHHFFFFFFFFFFFFFFFGGGGGGGGSDSDDDDDDDjDDDDDGTTTTTTTTTTTTTEEEEESsssssssDD'));
+</script>
+
+</body>
+
+</html>
