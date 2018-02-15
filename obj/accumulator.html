@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+      function Accumulator(startNumber) {
+        this.value = startNumber;
+        this.read = function () {
+          this.value += +prompt('Number?', 0);
+        }
+
+      }
+
+      let accumulator = new Accumulator(1); // начальное значение 1
+      accumulator.read(); // прибавит ввод prompt к текущему значению
+      accumulator.read(); // прибавит ввод prompt к текущему значению
+      alert( accumulator.value ); // выведет текущее значение
+    </script>
+
+</body>
+</html>

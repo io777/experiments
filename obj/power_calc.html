@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+
+      function Calculator() {
+        // доступные методы.
+        // из коробки умеет складывать и вычетать.
+        this.operations = [
+          {
+            name: '+',
+            func: function (a,b) {
+              return a + b;
+            }
+          },
+          {
+            name: '-',
+            func: function (a,b) {
+              return a - b;
+            }
+          },
+        ];
+
+        this.calculate = function (operation) {
+
+          // строку калькулятора разбили по пробелам и перенесли в массив.
+          this.arr = operation.split(' ');
+          this.a = +this.arr[0];
+          this.b = +this.arr[2];
+          this.operation = this.arr[1];
+
+          // сохраняем ссылку на объект
+          let self = this;
+
+          // перебираем доступные методы
+          this.operations.forEach(function (item) {
+            if(self.operation === item.name) {
+              self.result = item.func(self.a, self.b);
+            }
+          });
+
+          // возвращаем результат
+          return this.result;
+
+        };
+
+        // добавляем в массив новый метод.
+        this.addMethod = function (name, func) {
+          this.operations.push({name: name, func: func});
+        }
+
+      }
+
+      let powerCalc = new Calculator;
+      powerCalc.addMethod("*", function(a, b) {
+        return a * b;
+      });
+      powerCalc.addMethod("/", function(a, b) {
+        return a / b;
+      });
+      powerCalc.addMethod("**", function(a, b) {
+        return Math.pow(a, b);
+      });
+
+      let result = powerCalc.calculate("2 ** 3");
+      console.log( result ); // 8
+
+    </script>
+
+</body>
+</html>
