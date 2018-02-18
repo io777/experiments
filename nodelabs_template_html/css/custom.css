@@ -1,0 +1,334 @@
+/* Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.section {
+    text-align: center;
+}
+
+
+/* Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.header {
+    background-color: #333333;
+}
+
+nav {
+    padding-top: 20px;
+    height: 150px;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 8px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li:last-child a {
+    border-right: none;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    border-right: 2px solid grey;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: #cccccc;
+    font-size: 14px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+nav input {
+    width: 100%;
+    height: 40px;
+    border: none !important;
+}
+
+nav input:focus {
+    border: none !important;
+}
+
+nav input:focus::placeholder {
+    color: #000;
+}
+
+/* Hero
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.hero {
+    background-color: #eeeeee;
+    height: 300px;
+    vertical-align: middle;
+    line-height: 300px;
+}
+
+.hero-text {
+    line-height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+}
+
+.hero h3 {
+    color: seagreen;
+}
+.hero p {
+    color: #333333;
+}
+
+/* Last Article
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.last-update span {
+    display: block;
+    padding: 5px;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+    background-color: #1EAEDB;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.last-articles {
+    margin: 10% 0 10% 0;
+    text-align: left;
+}
+
+.article {
+    margin: 20px 10px 20px 10px;
+}
+
+.article h5 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.article h5 a {
+    text-decoration: none;
+    color: #0FA0CE;
+}
+
+.article h5 a:hover {
+    text-decoration: underline;
+}
+
+.article p {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.article span {
+    color: #888888;
+}
+
+
+
+/* Advertising
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.advertising {
+    border: 1px solid #9cd7f3;
+    height:200px;
+    margin-top: 0;
+    margin-bottom: 5%;
+    border-radius: 5px;
+}
+
+/* Subscribe
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.subscribe {
+    height: 360px;
+    background-color: seagreen;
+}
+
+.subscribe-text {
+    padding-top: 10%;
+}
+
+.subscribe-text h5 {
+    color: white;
+    margin-top: 10px;
+}
+
+
+.subscribe-text p {
+    color: #8ccb5e;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subscribe-text .email-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.subscribe-text .email-box {
+    overflow: hidden;
+}
+
+.subscribe-text .email-input {
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    padding-left: 20px;
+}
+
+.subscribe-text .email-input:focus {
+    border: none;
+}
+
+.subscribe-text .email-input:focus::placeholder {
+    color: black;
+}
+
+.subscribe-text .email-btn {
+    float: right;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: white;
+    background-color: #8ccb5e;
+    border: none;
+}
+
+.subscribe-text input[type="submit"]:active {
+    color: white;
+}
+
+.subscribe-text input[type="submit"]:hover {
+    color: white;
+}
+
+.subscribe-text input[type="submit"]:focus {
+    color: white;
+}
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.footer {
+    height: 440px;
+    background-color: #333333;
+    padding-top: 12%;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer h6 {
+    color: white;
+}
+
+.footer a {
+    color: #888888;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer p {
+    color: #888888;
+    text-align: left;
+}
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    nav ul li a {
+        font-size: 16px;
+    }
+    .last-update span {
+        width: 50%;
+    }
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {
+    nav ul li a {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .last-update span {
+        width: 40%;
+    }
+    .last-articles {
+        margin: 7% 0 7% 0;
+        text-align: left;
+    }
+    .subscribe-text .email-container {
+        width: 80%;
+    }
+    .footer {
+        padding-top: 8%;
+    }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    nav ul li a {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    .last-update span {
+        width: 30%;
+    }
+    .last-articles {
+        margin: 6% 0 6% 0;
+        text-align: left;
+    }
+    .subscribe-text .email-container {
+        width: 60%;
+    }
+    .subscribe-text {
+        padding-top: 8%;
+    }
+}
+
+/* Larger than desktop */
+@media (min-width: 990px) {
+    .last-update span {
+        width: 65%;
+    }
+    .advertising {
+        height:550px;
+        margin-top: 20%;
+    }
+    .subscribe-text .email-container {
+        width: 45%;
+    }
+    .footer {
+        height: 220px;
+        padding-top: 4%;
+    }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+    nav ul li a {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .advertising {
+        height:490px;
+        margin-top: 20%;
+    }
+    .footer {
+        height: 220px;
+        padding-top: 3%;
+    }
+}

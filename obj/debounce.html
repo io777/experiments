@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let getCachedUser = debounce(getUser, 150);
+
+  getCachedUser(1);
+
+  setTimeout(() => {
+    getCachedUser(12);
+  }, 100);
+
+  setTimeout(() => {
+    getCachedUser(123);
+  }, 200);
+
+  setTimeout(() => {
+    getCachedUser(1234);
+  }, 400);
+
+  // ... пауза
+
+  setTimeout(() => {
+    getCachedUser(12345);
+  }, 1400);
+
+  function getUser(userId) { // userId === x
+    return console.log(userId);
+  }
+
+
+  function debounce(f, delay) {
+    let timer;
+
+    return function(x) {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        f.call(this, x);
+      }, delay);
+    }
+  }
+</script>
+</body>
+</html>
