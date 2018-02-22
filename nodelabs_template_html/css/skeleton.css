@@ -54,7 +54,7 @@
     width: 80%; }
   .column,
   .columns {
-    margin-left: 4%; }
+    margin-left: 4%;}
   .column:first-child,
   .columns:first-child {
     margin-left: 0; }
@@ -76,7 +76,7 @@
   .one-third.column               { width: 30.6666666667%; }
   .two-thirds.column              { width: 65.3333333333%; }
 
-  .one-half.column                { width: 48%; }
+  .one-half.column                { width: 48%; margin-left: 2%;}
 
   /* Offsets */
   .offset-by-one.column,
