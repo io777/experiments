@@ -20,7 +20,7 @@ module.exports = http.createServer((req, res) => {
 
   if (req.method === 'GET') {
     if (pathname === '/') {
-      sendFile(config.get('publicRoot') + '/index.html', res);
+      sendFile(config.get('publicRoot') + '/clock.html', res);
     } else {
       let filepath = path.join(config.get('filesRoot'), filename);
       sendFile(filepath, res);

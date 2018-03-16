@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function Menu(state) {
+    this._state = state || Menu.STATE_CLOSED;
+  }
+
+  Menu.STATE_OPEN = 1;
+  Menu.STATE_CLOSED = 0;
+
+  Menu.prototype.open = function() {
+    this._state = Menu.STATE_OPEN;
+  };
+
+  Menu.prototype.close = function() {
+    this._state = Menu.STATE_CLOSED;
+  };
+
+  Menu.prototype._stateAsString = function() {
+    switch (this._state) {
+      case Menu.STATE_OPEN:
+        return 'открыто';
+
+      case Menu.STATE_CLOSED:
+        return 'закрыто';
+    }
+  };
+
+  Menu.prototype.showState = function() {
+    console.log(this._stateAsString());
+  };
+
+// Animation
+
+  let AnimatingMenu = function () {
+    Menu.apply(this, arguments);
+  };
+
+  AnimatingMenu.prototype = Object.create(Menu.prototype);
+  AnimatingMenu.prototype.constructor = Menu;
+
+  AnimatingMenu.STATE_ANIMATING = 2;
+
+  AnimatingMenu.prototype.open = function () {
+
+    this._state = AnimatingMenu.STATE_ANIMATING;
+    let self = this;
+
+    this._timerId = setTimeout(function () {
+      Menu.prototype.open.apply(self);
+    }, 1000);
+
+  };
+
+  AnimatingMenu.prototype.close = function () {
+    clearTimeout(this._timerId);
+    Menu.prototype.close.apply(this);
+  };
+
+  AnimatingMenu.prototype._stateAsString = function () {
+    if(this._state === AnimatingMenu.STATE_ANIMATING) {
+      return 'анимация';
+    }
+    return Menu.prototype._stateAsString.apply(this);
+  };
+
+
+// использование..
+
+  let menu = new AnimatingMenu();
+
+  menu.showState(); // закрыто
+
+  menu.open();
+  menu.showState(); // анимация
+
+  setTimeout(function() {
+    menu.showState(); // открыто
+
+    menu.close();
+    menu.showState(); // закрыто (закрытие без анимации)
+  }, 1000);
+
+
+
+</script>
+</body>
+</html>

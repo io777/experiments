@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .slider {
+            border-radius: 5px;
+            background: #E0E0E0;
+            background: -moz-linear-gradient(left top, #E0E0E0, #EEEEEE) repeat scroll 0 0 transparent;
+            background: -webkit-gradient(linear, left top, right bottom, from(#E0E0E0), to(#EEEEEE));
+            background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+            width: 310px;
+            height: 15px;
+            margin: 5px;
+        }
+
+        .thumb {
+            width: 10px;
+            height: 25px;
+            border-radius: 3px;
+            position: relative;
+            left: 10px;
+            top: -5px;
+            background: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="slider" class="slider">
+        <div class="thumb"></div>
+    </div>
+
+    <script>
+      let slider = new Slider({
+        elem: document.getElementById('slider')
+      });
+
+      function Slider(options) {
+
+        let elem = options.elem;
+        let thumb = elem.querySelector('.thumb');
+
+        let sliderCoords, thumbCoords, shiftX;
+
+
+        elem.onmousedown = function (event) {
+            if(event.target.closest('.thumb')) {
+              startDrag(event.clientX);
+            }
+        };
+
+        function startDrag(startClientX) {
+          thumbCoords = thumb.getBoundingClientRect();
+          shiftX = startClientX - thumbCoords.left;
+
+          sliderCoords = elem.getBoundingClientRect();
+
+          document.addEventListener('mousemove', onDocumentMouseMove);
+          document.addEventListener('mouseup', onDocumentMouseUp);
+        }
+
+        function moveTo(clientX) {
+          let newLeft = clientX - shiftX - sliderCoords.left;
+
+          // курсор ушёл вне слайдера
+          if (newLeft < 0) {
+            newLeft = 0;
+          }
+
+          let rightEdge = elem.offsetWidth - thumb.offsetWidth;
+          if (newLeft > rightEdge) {
+            newLeft = rightEdge;
+          }
+
+          thumb.style.left = newLeft + 'px';
+        }
+
+        function onDocumentMouseMove(e) {
+          moveTo(e.clientX);
+        }
+
+        function onDocumentMouseUp(e) {
+          document.removeEventListener('mousemove', onDocumentMouseMove);
+          document.removeEventListener('mouseup', onDocumentMouseUp);
+        }
+
+
+
+
+
+
+
+      }
+
+    </script>
+</body>
+</html>

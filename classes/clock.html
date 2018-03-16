@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function Clock(options) {
+
+    this._template = options.template;
+
+  }
+
+  Clock.prototype._render = function () {
+    let date = new Date();
+
+    let hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+
+    let min = date.getMinutes();
+    if (min < 10) min = '0' + min;
+
+    let sec = date.getSeconds();
+    if (sec < 10) sec = '0' + sec;
+
+    let output = this._template.replace('h', hours).replace('m', min).replace('s', sec);
+
+    console.log(output);
+
+  };
+
+  Clock.prototype.stop = function () {
+    clearInterval(this._timer);
+  };
+
+  Clock.prototype.start = function () {
+    let self = this;
+    this._render();
+    this._timer = setInterval(function () {
+      self._render();
+    }, 1000);
+  };
+
+  function ExtendedClock(options) {
+    Clock.apply(this, arguments);
+    this._precision = +options.precision || 1000;
+  }
+
+
+  ExtendedClock.prototype = Object.create(Clock.prototype);
+  ExtendedClock.prototype.constructor = Clock;
+
+
+ ExtendedClock.prototype.start = function () {
+   let self = this;
+   this._render();
+   this._timer = setInterval(function () {
+     self._render();
+   }, self._precision);
+ };
+
+
+  //Надо: часы, которые тикают раз в 10 секунд (точность 10000)
+  let lowResolutionClock = new ExtendedClock({
+      template: 'h:m:s',
+      precision: 10000
+  });
+
+  lowResolutionClock.start();
+
+
+</script>
+</body>
+</html>

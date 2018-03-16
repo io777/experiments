@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.polyfill.io/v1/polyfill.js?features=Element.prototype.closest"></script>
+    <style>
+        .voter {
+            font-family: Consolas, "Lucida Console", monospace;
+            font-size: 18px;
+        }
+
+        .up,
+        .down {
+            cursor: pointer;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="voter" class="voter">
+    <span class="down">—</span>
+    <span class="vote">0</span>
+    <span class="up">+</span>
+</div>
+
+<script>
+  function StepVoter(options) {
+    let elem = options.elem;
+    let step = options.step || 1;
+
+    let down = elem.querySelector('.down');
+    let up = elem.querySelector('.up');
+    let vote = elem.querySelector('.vote');
+
+    let count = 0;
+
+    function render() {
+      vote.innerHTML = count;
+    }
+
+    up.onclick = function () {
+      count = count + step;
+      render();
+    };
+
+    down.onclick = function () {
+      count = count - step;
+      render()
+    };
+
+    function setVote(number) {
+      count = number;
+    }
+
+    this.setVote = setVote;
+  }
+
+  let voter = new StepVoter({
+    elem: document.getElementById('voter'),
+    step: 2 // увеличивать/уменьшать сразу на 2 пункта
+  });
+
+  voter.setVote(100);
+</script>
+
+</body>
+
+</html>

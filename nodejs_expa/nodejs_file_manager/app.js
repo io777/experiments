@@ -74,7 +74,7 @@ const server = http.createServer((req, res) => {
 
   switch (req.method + ' ' + req.url){
     case 'GET /':
-      fs.readFile(__dirname + '/index.html', (err, data) => {
+      fs.readFile(__dirname + '/clock.html', (err, data) => {
           if(err) throw err;
           res.statusCode = 200;
           res.setHeader('Content-Type', 'text/html; charset=utf-8');
