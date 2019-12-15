@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const humanYearsCatYearsDogYears = (humanYears) => {
+    // Your code here!
+    let catYears;
+    let dogYears;
+    switch (humanYears){
+      case 1:
+        catYears = 15;
+        dogYears = 15;
+        break;
+      case 2:
+        catYears = 15 + 9;
+        dogYears = 15 + 9;
+        break;
+      default:
+        catYears = 15 + 9 + ((humanYears-2) * 4);
+        dogYears = 15 + 9 + ((humanYears-2) * 5);
+    }
+    return [humanYears,catYears,dogYears];
+  };
+
+  console.log(humanYearsCatYearsDogYears(10));
+
+</script>
+</body>
+</html>

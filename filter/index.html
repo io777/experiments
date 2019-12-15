@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var response = [
+            { id: "1", name: "Nix1" },
+            { id: "2", name: "Nix2" },
+            { id: "3", name: "Nix3" },
+            { id: "4", name: "Nix4" },
+            { id: "5", name: "Nix5" },
+        ];
+
+        var filter = { id: "", name: "Nix" };
+
+        var criteria = filter;
+        var res = [];
+        if (criteria.id !== "") {
+            response.forEach(function (element) {
+                if (element.id.indexOf(criteria.id) > -1) {
+                    res.push(element);
+                    response = res;
+                }
+            });
+        }
+        else res = response;
+        if (criteria.name !== "") {
+            res = [];
+            response.forEach(function (element) {
+                if (element.name.indexOf(criteria.name) > -1)
+                    res.push(element);
+            });
+        }
+        else res = response;
+
+        console.log(res); 
+    </script>
+</body>
+
+</html>

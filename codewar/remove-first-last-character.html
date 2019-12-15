@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      function mergeArrays(arr1, arr2) {
+
+        if(arr1 === [] && arr2 === []) {
+          return [];
+        }
+
+        let arrayAll = [...arr1, ...arr2];
+
+        const sortF = (a,b) => a > b ? 1 : -1;
+        const filterF = (item, pos, arr) => arr.indexOf(item) === pos;
+
+        return arrayAll.sort(sortF).filter(filterF);
+      }
+
+      console.log(mergeArrays([-1, -2, -3, 0, 0, 1, 2, 3, 4], [5,6,7,8]));
+    </script>
+</body>
+</html>
