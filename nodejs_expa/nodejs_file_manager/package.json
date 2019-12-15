@@ -10,7 +10,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "eslint": "^3.3.1",
+    "eslint": "^6.7.2",
     "eslint-config-google": "^0.6.0"
   }
 }
